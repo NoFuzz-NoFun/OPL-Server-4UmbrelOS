@@ -8,11 +8,10 @@ services:
 
   server:
     image: alpine:3.19
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "1024:1024"
-      - "445:445"
-      - "139:139"
+      - "8092:8092"
     volumes:
       - ${APP_DATA_DIR}/data:/share/PS2SMB
     command:
@@ -32,10 +31,6 @@ services:
             security = user
             map to guest = Bad User
             guest account = nobody
-            load printers = no
-            printing = bsd
-            printcap name = /dev/null
-            disable spoolss = yes
             server min protocol = NT1
             server max protocol = NT1
             client min protocol = NT1
@@ -63,7 +58,7 @@ services:
         mkdir -p /var/www
         cat << 'HTMLEOF' > /var/www/index.html
         <!DOCTYPE html>
-        <html><head><title>PS2 OPL Server</title><meta charset='utf-8'><style>body{background:#0f172a;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}div{text-align:center;padding:2.5rem;background:#1e293b;border-radius:1rem;border:1px solid #334155;box-shadow:0 10px 25px rgba(0,0,0,0.5);}h1{color:#38bdf8;margin-bottom:0.5rem;}p{color:#94a3b8;line-height:1.6;}code{background:#0f172a;padding:0.2rem 0.5rem;border-radius:0.25rem;color:#f1f5f9;font-size:0.95rem;}</style></head><body><div><h1>🎮 PS2 OPL Server Online!</h1><p>Servidor SMBv1 dedicado rodando no seu Umbrel OS.</p><p>Compartilhamento: <code>PS2SMB</code> | Porta OPL: <code>1024</code> ou <code>445</code></p><p>Pasta de jogos no Umbrel: <code>~/umbrel/app-data/nofuzz/data</code></p></div></body></html>
+        <html><head><title>PS2 OPL Server</title><meta charset='utf-8'><style>body{background:#0f172a;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}div{text-align:center;padding:2.5rem;background:#1e293b;border-radius:1rem;border:1px solid #334155;box-shadow:0 10px 25px rgba(0,0,0,0.5);}h1{color:#38bdf8;margin-bottom:0.5rem;}p{color:#94a3b8;line-height:1.6;}code{background:#0f172a;padding:0.2rem 0.5rem;border-radius:0.25rem;color:#f1f5f9;font-size:0.95rem;}</style></head><body><div><h1>🎮 PS2 OPL Server Online!</h1><p>Servidor SMBv1 dedicado rodando no seu Umbrel OS.</p><p>Compartilhamento: <code>PS2SMB</code> | Porta OPL: <code>1024</code></p><p>Pasta no Umbrel: <code>~/umbrel/app-data/nofuzz/data</code></p></div></body></html>
         HTMLEOF
         python3 -m http.server 8092 --directory /var/www &
         exec smbd -F -S -d 1 --configfile=/etc/samba/smb.conf
