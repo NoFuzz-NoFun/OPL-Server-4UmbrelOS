@@ -1,12 +1,12 @@
 manifestVersion: 1
 id: "nofuzz"
 name: "PS2 OPL Server"
-tagline: "Servidor SMBv1 para carregar jogos no PS2 via OPL"
+tagline: "Servidor de streaming de jogos PS2 para Open PS2 Loader"
 category: "media"
 version: "1.0.0"
 port: 8092
 description: >-
-  Servidor dedicado Samba com suporte a SMBv1 (NT1) na porta 1024 para carregar
+  Servidor dedicado com suporte a SMBv1 (NT1) na porta 1024 para carregar
   jogos de PlayStation 2 via rede pelo Open PS2 Loader (OPL).
 developer: "NoFuzz-NoFun"
 website: "https://github.com/NoFuzz-NoFun/OPL-Server-4UmbrelOS"
