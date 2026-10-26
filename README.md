@@ -20,7 +20,8 @@ O PlayStation 2 e o Open PS2 Loader (OPL) utilizam o protocolo legado **SMBv1 (d
 ```text
 OPL-Server-4UmbrelOS/
 ├── README.md                # Documentação e instruções do projeto (fica na raiz)
-└── ps2-opl/                 # Pasta do App para a Loja do Umbrel OS 2.0
+└── nofuzz/                 # Pasta do App para a Loja do Umbrel OS 2.0
     ├── umbrel-app.yml       # Manifesto de aplicativo para a loja do Umbrel
     ├── docker-compose.yml   # Orquestração dos containers (Samba SMBv1 + Gerenciador Web)
     └── smb.conf             # Configuração otimizada para o PS2 OPL
+    └── icon.svg
