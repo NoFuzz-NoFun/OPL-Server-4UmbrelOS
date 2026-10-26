@@ -1,7 +1,7 @@
 manifestVersion: 1
 id: "nofuzz"
 name: "PS2 OPL Server"
-tagline: "Servidor de streaming de jogos PS2 para Open PS2 Loader"
+tagline: "Servidor de streaming de ISOs para Open PS2 Loader"
 category: "media"
 version: "1.0.0"
 port: 8092
