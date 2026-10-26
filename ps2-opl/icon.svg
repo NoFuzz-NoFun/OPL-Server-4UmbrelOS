@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ps2bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#020408"/>
+    </linearGradient>
+    <linearGradient id="ps2blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#0055ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Fundo com cantos arredondados padrão Umbrel -->
+  <rect width="512" height="512" rx="112" fill="url(#ps2bg)"/>
+  
+  <!-- Detalhe da grelha clássica PS2 -->
+  <rect x="80" y="80" width="352" height="12" rx="6" fill="#1e293b"/>
+  <rect x="80" y="104" width="352" height="12" rx="6" fill="#1e293b"/>
+
+  <!-- Logo estilizado PS2 & OPL -->
+  <g transform="translate(116, 150)">
+    <!-- Texto PS2 com gradiente azul neon -->
+    <text x="140" y="110" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="95" fill="url(#ps2blue)" text-anchor="middle" letter-spacing="4">PS2</text>
+    
+    <!-- Tag OPL SERVER -->
+    <rect x="35" y="145" width="210" height="42" rx="21" fill="#00d2ff" fill-opacity="0.15" stroke="#00d2ff" stroke-width="2"/>
+    <text x="140" y="174" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="20" fill="#00d2ff" text-anchor="middle" letter-spacing="3">OPL SERVER</text>
+  </g>
+
+  <!-- Botões icônicos do PS (Triângulo, Círculo, X, Quadrado) -->
+  <g transform="translate(136, 400)">
+    <!-- Triângulo Verde -->
+    <polygon points="20,8 32,28 8,28" fill="none" stroke="#00e676" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Círculo Vermelho -->
+    <circle cx="85" cy="18" r="11" fill="none" stroke="#ff5252" stroke-width="4"/>
+    <!-- X Azul -->
+    <line x1="140" y1="8" x2="160" y2="28" stroke="#448aff" stroke-width="4" stroke-linecap="round"/>
+    <line x1="160" y1="8" x2="140" y2="28" stroke="#448aff" stroke-width="4" stroke-linecap="round"/>
+    <!-- Quadrado Rosa -->
+    <rect x="205" y="8" width="20" height="20" fill="none" stroke="#ff4081" stroke-width="4" rx="2"/>
+  </g>
+</svg>
