@@ -15,20 +15,12 @@ O PlayStation 2 e o Open PS2 Loader (OPL) utilizam o protocolo legado **SMBv1 (d
 
 ---
 
-## 📂 Estrutura de Pastas do Projeto
+## 📂 Estrutura de Pastas do Repositório (Umbrel Community App Store)
 
 ```text
 OPL-Server-4UmbrelOS/
-├── docker-compose.yml       # Orquestração dos containers (Samba SMBv1 + Gerenciador Web)
-├── smb.conf                 # Configuração otimizada para o PS2 OPL
-├── README.md                # Instruções e documentação
-└── data/
-    └── PS2SMB/
-        ├── DVD/             # Jogos em formato DVD (acima de 700 MB)
-        ├── CD/              # Jogos em formato CD (até 700 MB)
-        ├── ART/             # Capas e artes de jogos (_COV.jpg, etc)
-        ├── CFG/             # Arquivos de configurações (.cfg)
-        ├── VMC/             # Memory Cards Virtuais (.bin)
-        ├── THM/             # Temas do menu do OPL
-        ├── APPS/            # Aplicativos e emuladores ELF
-        └── POPS/            # Jogos de PS1 (POPStarter)
+├── README.md                # Documentação e instruções do projeto (fica na raiz)
+└── ps2-opl/                 # Pasta do App para a Loja do Umbrel OS 2.0
+    ├── umbrel-app.yml       # Manifesto de aplicativo para a loja do Umbrel
+    ├── docker-compose.yml   # Orquestração dos containers (Samba SMBv1 + Gerenciador Web)
+    └── smb.conf             # Configuração otimizada para o PS2 OPL
