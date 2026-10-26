@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: "nofuzz-opl"
+id: "ps2-opl"
 name: "PS2 OPL Server"
 tagline: "Servidor de streaming de jogos PS2 para Open PS2 Loader"
 category: "media"
