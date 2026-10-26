@@ -5,19 +5,19 @@ services:
     image: getumbrel/app-proxy:v1.3.0
     restart: unless-stopped
     environment:
-      APP_HOST: ps2-opl_server_1
+      APP_HOST: nofuzz_server_1
       APP_PORT: 8092
 
   server:
     image: alpine:3.19
     restart: unless-stopped
     ports:
-      - "1024:445"
+      - "1024:1024"
       - "445:445"
       - "139:139"
     volumes:
       - ${APP_DATA_DIR}/data:/share/PS2SMB
-    command: >
+    command: |
       sh -c "
         apk add --no-cache samba samba-common-tools python3 &&
         mkdir -p /share/PS2SMB/DVD /share/PS2SMB/CD /share/PS2SMB/ART /share/PS2SMB/CFG /share/PS2SMB/VMC /share/PS2SMB/THM /share/PS2SMB/APPS /share/PS2SMB/POPS &&
@@ -26,7 +26,7 @@ services:
         cat << 'EOF' > /etc/samba/smb.conf
         [global]
             workgroup = WORKGROUP
-            server string = Umbrel PS2 OPL Server
+            server string = OPL Server 4 UmbrelOS
             netbios name = UMBREL-OPL
             server role = standalone server
             security = user
@@ -38,12 +38,16 @@ services:
             client max protocol = NT1
             ntlm auth = ntlmv1-permitted
             smb ports = 1024 445 139
+            load printers = no
+            printing = bsd
+            printcap name = /dev/null
+            disable spoolss = yes
             socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
             use sendfile = yes
             strict locking = no
             unix extensions = no
         [PS2SMB]
-            comment = PS2 Games
+            comment = PS2 OPL Games
             path = /share/PS2SMB
             browseable = yes
             read only = no
@@ -58,7 +62,7 @@ services:
         mkdir -p /var/www &&
         cat << 'HTMLEOF' > /var/www/index.html
         <!DOCTYPE html>
-        <html><head><title>PS2 OPL Server</title><meta charset='utf-8'><style>body{background:#0f172a;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}div{text-align:center;padding:2.5rem;background:#1e293b;border-radius:1rem;border:1px solid #334155;box-shadow:0 10px 25px rgba(0,0,0,0.5);}h1{color:#38bdf8;margin-bottom:0.5rem;}p{color:#94a3b8;line-height:1.6;}code{background:#0f172a;padding:0.2rem 0.5rem;border-radius:0.25rem;color:#f1f5f9;font-size:0.95rem;}</style></head><body><div><h1>🎮 PS2 OPL Server Online!</h1><p>Servidor SMBv1 dedicado rodando no seu Umbrel OS.</p><p>Compartilhamento: <code>PS2SMB</code> | Porta OPL: <code>1024</code> ou <code>445</code></p><p>Pasta de jogos no Umbrel: <code>~/umbrel/app-data/ps2-opl/data</code></p></div></body></html>
+        <html><head><title>PS2 OPL Server</title><meta charset='utf-8'><style>body{background:#0f172a;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}div{text-align:center;padding:2.5rem;background:#1e293b;border-radius:1rem;border:1px solid #334155;box-shadow:0 10px 25px rgba(0,0,0,0.5);}h1{color:#38bdf8;margin-bottom:0.5rem;}p{color:#94a3b8;line-height:1.6;}code{background:#0f172a;padding:0.2rem 0.5rem;border-radius:0.25rem;color:#f1f5f9;font-size:0.95rem;}</style></head><body><div><h1>🎮 PS2 OPL Server Online!</h1><p>Servidor SMBv1 dedicado rodando no seu Umbrel OS.</p><p>Compartilhamento: <code>PS2SMB</code> | Porta OPL: <code>1024</code> ou <code>445</code></p><p>Pasta de jogos no Umbrel: <code>~/umbrel/app-data/nofuzz/data</code></p></div></body></html>
         HTMLEOF
         python3 -m http.server 8092 --directory /var/www &
         exec smbd -F -S -d 1 --configfile=/etc/samba/smb.conf
