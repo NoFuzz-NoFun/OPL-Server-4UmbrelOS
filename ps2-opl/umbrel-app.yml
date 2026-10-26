@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: "ps2-opl"
+id: "nofuzz-opl"
 name: "PS2 OPL Server"
 tagline: "Servidor de streaming de jogos PS2 para Open PS2 Loader"
 category: "media"
@@ -7,8 +7,7 @@ version: "1.0.0"
 port: 8092
 description: >-
   Servidor dedicado com suporte a SMBv1 (NT1) na porta 1024 para carregar
-  jogos de PlayStation 2 via rede pelo Open PS2 Loader (OPL). 
-  Vibecodado e inspirado em EL Mariolo OPL-Server
+  jogos de PlayStation 2 via rede pelo Open PS2 Loader (OPL).
 developer: "NoFuzz-NoFun"
 website: "https://github.com/NoFuzz-NoFun/OPL-Server-4UmbrelOS"
 dependencies: []
